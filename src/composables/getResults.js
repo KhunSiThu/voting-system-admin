@@ -18,13 +18,16 @@ function getResults(table, callback) {
 
             // Combine candidate data with voter count and document ID
             results.push({
-                documentId: doc.id,
+                id: doc.id,
                 ...candidateData,
                 voterCount,
             });
         }
 
-        // Pass the results to the callback function
+        // Sort results by voterCount in descending order
+        results.sort((a, b) => b.voterCount - a.voterCount);
+
+        // Pass the sorted results to the callback function
         callback(results);
     });
 
