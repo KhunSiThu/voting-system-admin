@@ -1,38 +1,32 @@
+import { ref } from "vue";
 import { db } from "@/firebase/config";
 
-function getResults(table, callback) {
-    const collectionRef = db.collection(table);
+// Real-time `getResults` function
+const getResults = (year, callback) => {
+    const allResults = ref(null);
 
-    // Set up a real-time listener on the collection
-    const unsubscribe = collectionRef.onSnapshot(async (querySnapshot) => {
-        const results = [];
+    try {
+        const docRef = db.collection("results").doc(year.toString());
 
-        // Use a for...of loop to handle async operations
-        for (const doc of querySnapshot.docs) {
-            const data = doc.data();
-            const voterCount = data.voter && Array.isArray(data.voter) ? data.voter.length : 0;
+        // Set up a real-time listener using `onSnapshot`
+        docRef.onSnapshot((doc) => {
+            if (doc.exists) {
+                allResults.value = doc.data();
 
-            // Fetch candidate data from the 'candidates' collection using doc.id
-            const candidateSnapshot = await db.collection("candidates").doc(doc.id).get();
-            const candidateData = candidateSnapshot.data();
+                // Trigger the callback with the updated data, if provided
+                if (callback) {
+                    callback(doc.data());
+                }
+            } else {
+                console.log("No results found for the year:", year);
+                allResults.value = null;
+            }
+        });
+    } catch (error) {
+        console.error("Error setting up real-time listener:", error);
+    }
 
-            // Combine candidate data with voter count and document ID
-            results.push({
-                id: doc.id,
-                ...candidateData,
-                voterCount,
-            });
-        }
-
-        // Sort results by voterCount in descending order
-        results.sort((a, b) => b.voterCount - a.voterCount);
-
-        // Pass the sorted results to the callback function
-        callback(results);
-    });
-
-    // Return the unsubscribe function to allow stopping the listener
-    return unsubscribe;
-}
+    return allResults; // Reactive reference to use in Vue components
+};
 
 export default getResults;
