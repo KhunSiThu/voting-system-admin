@@ -28,6 +28,13 @@
                 </router-link>
             </li>
             <li>
+                <router-link :to="{ name: 'ManageUsers' }" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-user-gear text-xl"></i>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Manage Users</span>
+                </router-link>
+            </li>
+
+            <li>
                 <router-link :to="{ name: 'Deadline' }" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-calendar-days text-xl"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Manage Deadline</span>
@@ -36,8 +43,7 @@
 
             <li>
                 <router-link :to="{ name: 'Candidates' }" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-users text-xl"></i>
-
+                    <i class="fa-solid fa-users-gear text-xl"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Manage Candidates</span>
                     <!-- <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span> -->
                 </router-link>

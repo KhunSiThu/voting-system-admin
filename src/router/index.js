@@ -9,6 +9,7 @@ import Candidates from '@/views/Candidates.vue'
 import Deadline from '@/views/Deadline.vue'
 import AddCandidates from '@/views/AddCandidates.vue'
 import EditCandidate from '@/views/EditCandidate.vue'
+import ManageUsers from '@/views/ManageUsers.vue'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     path: '/HomeView',
     name: 'HomeView',
     component: HomeView
+  },
+  {
+    path: '/ManageUsers',
+    name: 'ManageUsers',
+    component: ManageUsers
   },
   {
     path: '/Candidates',
