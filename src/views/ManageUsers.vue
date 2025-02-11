@@ -97,30 +97,31 @@
                     <div class="w-full">
                         <div class="flex justify-between items-center mb-4">
                             <h1 class="text-2xl font-bold">Generate Teacher ID</h1>
-                            <button @click="generateTeacherId"
+                            <button @click="generateTeacherModal = true"
                                 class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all">
                                 Generate Now +
                             </button>
                         </div>
-                        <div class="overflow-x-auto">
+                        <div class="overflow-x-auto" v-if="teacherIds">
                             <table
                                 class="table-auto w-full text-center border-collapse border border-gray-300 dark:border-gray-700">
                                 <thead class="bg-gray-200 dark:bg-gray-700 dark:text-white">
                                     <tr>
                                         <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Teacher ID
                                         </th>
-                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Use</th>
+                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">User</th>
                                         <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(id, index) in teacherIds" :key="index"
+                                    <tr v-for="teacher in teacherIds" :key="teacher.teacherId"
                                         class="hover:bg-gray-100 dark:hover:bg-gray-800">
-                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ id }}</td>
-                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ id ? 'true'
-                                            : 'false' }}</td>
+                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{
+                                            teacher.teacherId }}</td>
+                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{
+                                            teacher.user }}</td>
                                         <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
-                                            <button @click="openDeleteTeacherIdModal(index)"
+                                            <button @click="openDeleteTeacherIdModal(teacher.id)"
                                                 class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all">
                                                 Delete
                                             </button>
@@ -128,6 +129,9 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div v-else class="text-center text-gray-500 dark:text-gray-400">
+                            No teacher IDs found.
                         </div>
                     </div>
                 </section>
@@ -192,6 +196,41 @@
                     </p>
                 </section>
             </section>
+        </div>
+
+        <!-- Generate TeacherId Modal -->
+        <div v-if="generateTeacherModal"
+            class="flex bg-blur overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                    <button type="button" @click="generateTeacherModal = flase"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-center">
+                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure to
+                            generate Teacher ID ?</h3>
+                        <button type="button" @click="generateTeacherModal = flase"
+                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            No, cancel
+                        </button>
+                        <button @click="generateTeacherId" type="button"
+                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Yes,
+                            I'm sure</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Edit Student Modal -->
@@ -287,7 +326,7 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                             <span v-else>Save</span>
-                            
+
                         </button>
                     </div>
                 </form>
@@ -313,12 +352,16 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
 import SideBar from '@/components/SideBar.vue';
+import useDeleteTeacherId from '@/composables/deleteTeacherId';
+import listenToAllTeacherIds from '@/composables/getAllTeacherId';
 import getStudentLimit from '@/composables/getStudentLimit';
 import { db } from '@/firebase/config';
+import { onUnmounted } from 'vue';
 import {
     ref,
     onMounted
@@ -333,7 +376,7 @@ export default {
         const isLoading = ref(true);
         const activeSection = ref('controlUser');
         const students = ref([]);
-        const teacherIds = ref([]);
+
         const isEditModalOpen = ref(false);
         const isDeleteModalOpen = ref(false);
         const isEditLimitModalOpen = ref(false);
@@ -342,7 +385,16 @@ export default {
         const selectedLimit = ref({});
         const selectedTeacherIdIndex = ref(null);
 
+        const generateTeacherModal = ref(false);
+
         const click = ref(false);
+
+       
+       
+
+        let {teacherIds} = listenToAllTeacherIds();
+
+
 
         // Initial student limits
         const studentLimits = ref([{
@@ -421,9 +473,24 @@ export default {
         };
 
         // Generate a new teacher ID
-        const generateTeacherId = () => {
+        const generateTeacherId = async () => {
             const id = `T${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
-            teacherIds.value.push(id);
+
+            // Set Data to Firebase (teacherId)
+            let teacherID = {
+                teacherId: id,
+                user: false
+            };
+
+            try {
+                await db.collection("teacherID").doc().set(teacherID);
+                console.log("Teacher ID successfully generated and stored:", id);
+            } catch (error) {
+                console.error("Error generating and storing teacher ID:", error);
+                throw error; // Re-throw the error if you want to handle it elsewhere
+            }
+
+            generateTeacherModal.value = false;
         };
 
         // Open the delete teacher ID modal
@@ -437,10 +504,12 @@ export default {
             isDeleteTeacherIdModalOpen.value = false;
         };
 
-        // Confirm deletion of a teacher ID
-        const confirmDeleteTeacherId = () => {
-            teacherIds.value.splice(selectedTeacherIdIndex.value, 1);
-            closeDeleteTeacherIdModal();
+        // Confirm deletion
+        const confirmDeleteTeacherId = async () => {
+            if (selectedTeacherIdIndex.value) {
+                await useDeleteTeacherId(selectedTeacherIdIndex.value);
+                closeDeleteTeacherIdModal();
+            }
         };
 
         // Open the edit limit modal
@@ -575,6 +644,8 @@ export default {
             openDeleteModal,
             closeDeleteModal,
             confirmDelete,
+
+            generateTeacherModal
         };
     },
 };
