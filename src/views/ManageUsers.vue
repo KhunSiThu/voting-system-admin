@@ -68,19 +68,26 @@
                                 class="table-auto w-full text-center border-collapse border border-gray-300 dark:border-gray-700">
                                 <thead class="bg-gray-200 dark:bg-gray-700 dark:text-white">
                                     <tr>
-                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Major</th>
-                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Students Limit
+                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            Major
                                         </th>
-                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Action</th>
+                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            Students Limit
+                                        </th>
+                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="(limit, index) in studentLimits" :key="index"
                                         class="hover:bg-gray-100 dark:hover:bg-gray-800">
-                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ limit.major
-                                            }}</td>
-                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ limit.limit
-                                            }}</td>
+                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            {{ limit.major }}
+                                        </td>
+                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            {{ limit.limit }}
+                                        </td>
                                         <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
                                             <button @click="openEditLimitModal(limit, index)"
                                                 class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all">
@@ -107,19 +114,26 @@
                                 class="table-auto w-full text-center border-collapse border border-gray-300 dark:border-gray-700">
                                 <thead class="bg-gray-200 dark:bg-gray-700 dark:text-white">
                                     <tr>
-                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Teacher ID
+                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            Teacher ID
                                         </th>
-                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">User</th>
-                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Action</th>
+                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            User
+                                        </th>
+                                        <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="teacher in teacherIds" :key="teacher.teacherId"
                                         class="hover:bg-gray-100 dark:hover:bg-gray-800">
-                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{
-                                            teacher.teacherId }}</td>
-                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{
-                                            teacher.user }}</td>
+                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            {{ teacher.teacherId }}
+                                        </td>
+                                        <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                            {{ teacher.user }}
+                                        </td>
                                         <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
                                             <button @click="openDeleteTeacherIdModal(teacher.id)"
                                                 class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all">
@@ -145,12 +159,24 @@
                             class="table-auto w-full text-center border-collapse border border-gray-300 dark:border-gray-700">
                             <thead class="bg-gray-200 dark:bg-gray-700 dark:text-white">
                                 <tr>
-                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Profile Image</th>
-                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Name</th>
-                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Roll No</th>
-                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Major</th>
-                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Year</th>
-                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">Actions</th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Profile Image
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Name
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Roll No
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Major
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Year
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Actions
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -160,20 +186,19 @@
                                         <img :src="student.profileImage" :alt="student.name"
                                             class="w-10 h-10 rounded-full mx-auto" />
                                     </td>
-                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ student.name }}
-                                    </td>
-                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ student.rollNo
-                                        }}</td>
-                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ student.major
-                                        }}</td>
-                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">{{ student.year }}
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        {{ student.name }}
                                     </td>
                                     <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
-                                        <button
-                                            class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all"
-                                            @click="openEditModal(student)">
-                                            Edit
-                                        </button>
+                                        {{ student.rollno }}
+                                    </td>
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        {{ student.major }}
+                                    </td>
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        {{ student.year }}
+                                    </td>
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
                                         <button
                                             class="ml-2 px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all"
                                             @click="openDeleteModal(student)">
@@ -190,10 +215,50 @@
                 <section v-if="activeSection === 'allTeachers'"
                     class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                     <h1 class="text-2xl font-bold mb-4">All Teachers</h1>
-                    <p class="text-gray-700 dark:text-gray-300">
-                        View and manage all teacher records. You can assign roles, update profiles, and manage
-                        permissions.
-                    </p>
+                    <div class="overflow-x-auto">
+                        <table
+                            class="table-auto w-full text-center border-collapse border border-gray-300 dark:border-gray-700">
+                            <thead class="bg-gray-200 dark:bg-gray-700 dark:text-white">
+                                <tr>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Profile Image
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Name
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Teacher ID
+                                    </th>
+                                    <th class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="teacher in teachers" :key="teacher.id"
+                                    class="hover:bg-gray-100 dark:hover:bg-gray-800">
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        <img :src="teacher.profileImage" :alt="teacher.name"
+                                            class="w-10 h-10 rounded-full mx-auto" />
+                                    </td>
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        {{ teacher.name }}
+                                    </td>
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        {{ teacher.teacherId }}
+                                    </td>
+
+                                    <td class="px-4 py-2 border border-gray-300 dark:border-gray-600">
+                                        <button
+                                            class="ml-2 px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all"
+                                            @click="openDeleteTeacherModal(teacher)">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </section>
         </div>
@@ -219,70 +284,53 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure to
-                            generate Teacher ID ?</h3>
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                            Are you sure to generate Teacher ID ?
+                        </h3>
                         <button type="button" @click="generateTeacherModal = flase"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                             No, cancel
                         </button>
                         <button @click="generateTeacherId" type="button"
-                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Yes,
-                            I'm sure</button>
+                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                            Yes, I'm sure
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Edit Student Modal -->
-        <div v-if="isEditModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-1/3">
-                <h2 class="text-xl font-bold mb-4">Edit Student</h2>
-                <form @submit.prevent="saveStudent">
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-2">Name</label>
-                        <input v-model="selectedStudent.name" type="text"
-                            class="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600" required />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-2">Roll No</label>
-                        <input v-model="selectedStudent.rollNo" type="text"
-                            class="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600" required />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-2">Major</label>
-                        <input v-model="selectedStudent.major" type="text"
-                            class="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600" required />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-2">Year</label>
-                        <input v-model="selectedStudent.year" type="text"
-                            class="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600" required />
-                    </div>
-                    <div class="flex justify-end">
-                        <button type="button" @click="closeEditModal"
-                            class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-all mr-2">
-                            Cancel
-                        </button>
-                        <button type="submit"
-                            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all">
-                            Save
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
         <!-- Delete Confirmation Modal -->
         <div v-if="isDeleteModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-1/3">
                 <h2 class="text-xl font-bold mb-4">Delete Student</h2>
-                <p class="mb-4">Are you sure you want to delete {{ selectedStudent.name }}?</p>
+                <p class="mb-4">Are you sure you want to delete {{ selectedUser.name }}?</p>
                 <div class="flex justify-end">
                     <button type="button" @click="closeDeleteModal"
                         class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-all mr-2">
                         Cancel
                     </button>
                     <button type="button" @click="confirmDelete"
+                        class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Delete Confirmation Modal -->
+        <div v-if="isDeleteTeacherModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-1/3">
+                <h2 class="text-xl font-bold mb-4">Delete Teacher</h2>
+                <p class="mb-4">Are you sure you want to delete {{ selectedUser.name }}?</p>
+                <div class="flex justify-end">
+                    <button type="button" @click="closeDeleteModal"
+                        class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-all mr-2">
+                        Cancel
+                    </button>
+                    <button type="button" @click="confirmDeleteTeacher"
                         class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all">
                         Delete
                     </button>
@@ -326,7 +374,6 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                             <span v-else>Save</span>
-
                         </button>
                     </div>
                 </form>
@@ -352,20 +399,17 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
-import SideBar from '@/components/SideBar.vue';
-import useDeleteTeacherId from '@/composables/deleteTeacherId';
-import listenToAllTeacherIds from '@/composables/getAllTeacherId';
-import getStudentLimit from '@/composables/getStudentLimit';
-import { db } from '@/firebase/config';
-import { onUnmounted } from 'vue';
-import {
-    ref,
-    onMounted
-} from 'vue';
+import SideBar from "@/components/SideBar.vue";
+import useDeleteTeacherId from "@/composables/deleteTeacherId";
+import listenToAllTeacherIds from "@/composables/getAllTeacherId";
+import getAllUser from "@/composables/getAllUser";
+import getStudentLimit from "@/composables/getStudentLimit";
+import { db } from "@/firebase/config";
+import { onUnmounted } from "vue";
+import { ref, onMounted } from "vue";
 
 export default {
     components: {
@@ -374,14 +418,16 @@ export default {
     setup() {
         // Reactive state variables
         const isLoading = ref(true);
-        const activeSection = ref('controlUser');
+        const activeSection = ref("controlUser");
         const students = ref([]);
+        const teachers = ref([]);
 
         const isEditModalOpen = ref(false);
         const isDeleteModalOpen = ref(false);
+        const isDeleteTeacherModalOpen = ref(false);
         const isEditLimitModalOpen = ref(false);
         const isDeleteTeacherIdModalOpen = ref(false);
-        const selectedStudent = ref({});
+        const selectedUser = ref({});
         const selectedLimit = ref({});
         const selectedTeacherIdIndex = ref(null);
 
@@ -389,30 +435,26 @@ export default {
 
         const click = ref(false);
 
-       
-       
-
-        let {teacherIds} = listenToAllTeacherIds();
-
-
+        let { teacherIds } = listenToAllTeacherIds();
 
         // Initial student limits
-        const studentLimits = ref([{
-            major: 'Electronic Engineering',
-            limit: 0
-        },
-        {
-            major: 'Electrical Power Engineering',
-            limit: 0
-        },
-        {
-            major: 'Civil Engineering',
-            limit: 0
-        },
-        {
-            major: 'Mechanical Engineering',
-            limit: 0
-        },
+        const studentLimits = ref([
+            {
+                major: "Electronic Engineering",
+                limit: 0,
+            },
+            {
+                major: "Electrical Power Engineering",
+                limit: 0,
+            },
+            {
+                major: "Civil Engineering",
+                limit: 0,
+            },
+            {
+                major: "Mechanical Engineering",
+                limit: 0,
+            },
         ]);
 
         // Mapping for major names & Firebase short codes
@@ -430,16 +472,17 @@ export default {
                     const docRef = db.collection("admin").doc("student-limit");
                     const shortCode = majorMapping[selectedLimit.value.major]; // Get the short code for the major
                     const updateData = {
-                        [shortCode]: selectedLimit.value.limit
+                        [shortCode]: selectedLimit.value.limit,
                     }; // Prepare the update data
 
                     // Update the Firebase document
                     await docRef.set(updateData, {
-                        merge: true
+                        merge: true,
                     });
 
                     // Update the local state
-                    studentLimits.value[selectedLimit.value.index].limit = selectedLimit.value.limit;
+                    studentLimits.value[selectedLimit.value.index].limit =
+                        selectedLimit.value.limit;
                     click.value = false;
                     closeEditLimitModal();
                 } catch (error) {
@@ -452,7 +495,7 @@ export default {
             try {
                 const limits = await getStudentLimit();
                 if (limits.value) {
-                    studentLimits.value = studentLimits.value.map(student => {
+                    studentLimits.value = studentLimits.value.map((student) => {
                         const shortCode = majorMapping[student.major]; // Find matching short code
                         return {
                             ...student,
@@ -479,7 +522,7 @@ export default {
             // Set Data to Firebase (teacherId)
             let teacherID = {
                 teacherId: id,
-                user: false
+                user: false,
             };
 
             try {
@@ -516,7 +559,7 @@ export default {
         const openEditLimitModal = (limit, index) => {
             selectedLimit.value = {
                 ...limit,
-                index
+                index,
             };
             isEditLimitModalOpen.value = true;
         };
@@ -532,26 +575,12 @@ export default {
             selectedLimit.value = {};
         };
 
-
-        // Open the edit student modal
-        const openEditModal = (student) => {
-            selectedStudent.value = {
-                ...student
-            };
-            isEditModalOpen.value = true;
-        };
-
-        // Close the edit student modal
-        const closeEditModal = () => {
-            isEditModalOpen.value = false;
-        };
-
         // Save the updated student details
         const saveStudent = () => {
-            const index = students.value.findIndex(s => s.id === selectedStudent.value.id);
+            const index = students.value.findIndex((s) => s.id === selectedUser.value.id);
             if (index !== -1) {
                 students.value[index] = {
-                    ...selectedStudent.value
+                    ...selectedUser.value,
                 };
             }
             closeEditModal();
@@ -559,8 +588,8 @@ export default {
 
         // Open the delete student modal
         const openDeleteModal = (student) => {
-            selectedStudent.value = {
-                ...student
+            selectedUser.value = {
+                ...student,
             };
             isDeleteModalOpen.value = true;
         };
@@ -568,47 +597,99 @@ export default {
         // Close the delete student modal
         const closeDeleteModal = () => {
             isDeleteModalOpen.value = false;
+            isDeleteTeacherModalOpen.value = false;
         };
 
-        // Confirm deletion of a student
-        const confirmDelete = () => {
-            students.value = students.value.filter(s => s.id !== selectedStudent.value.id);
-            closeDeleteModal();
+        const confirmDelete = async () => {
+            try {
+                // Check if selectedUser and its ID exist
+                if (!selectedUser.value || !selectedUser.value.id) {
+                    throw new Error("No student selected for deletion.");
+                }
+
+                // Reference to the student document in Firestore
+                const studentRef = db.collection("students").doc(selectedUser.value.id);
+
+                // Delete the document
+                await studentRef.delete();
+
+                // Update the local state to remove the deleted student
+                students.value = students.value.filter((s) => s.id !== selectedUser.value.id);
+
+                // Close the delete modal
+                closeDeleteModal();
+
+                console.log("Student deleted successfully!");
+            } catch (error) {
+                console.error("Error deleting student:", error);
+            }
         };
 
-        // Fetch data on component mount
+        // Open the delete student modal
+        const openDeleteTeacherModal = (teacher) => {
+            selectedUser.value = {
+                ...teacher,
+            };
+            isDeleteTeacherModalOpen.value = true;
+        };
+
+
+        const confirmDeleteTeacher = async () => {
+            try {
+                // Check if selectedUser and its ID exist
+                if (!selectedUser.value || !selectedUser.value.id) {
+                    throw new Error("No teacher selected for deletion.");
+                }
+
+                // Reference to the teacher document in Firestore
+                const teacherRef = db.collection("teachers").doc(selectedUser.value.id);
+
+                // Delete the document
+                await teacherRef.delete();
+
+                // Update the local state to remove the deleted teacher
+                teachers.value = teachers.value.filter((s) => s.id !== selectedUser.value.id);
+
+                // Close the delete modal
+                closeDeleteModal();
+
+                console.log("teacher deleted successfully!");
+            } catch (error) {
+                console.error("Error deleting teacher:", error);
+            }
+        };
+
         onMounted(async () => {
             try {
+                // Fetch student limits
                 await fetchStudentLimits();
-                // Simulate fetching students from an API
-                setTimeout(() => {
-                    students.value = [{
-                        id: 1,
-                        profileImage: 'https://via.placeholder.com/40',
-                        name: 'John Doe',
-                        rollNo: '2023EC-001',
-                        major: 'Electronic Engineering',
-                        year: '2023'
-                    },
-                    {
-                        id: 2,
-                        profileImage: 'https://via.placeholder.com/40',
-                        name: 'Jane Smith',
-                        rollNo: '2023EP-002',
-                        major: 'Electrical Power Engineering',
-                        year: '2023'
-                    },
-                    {
-                        id: 3,
-                        profileImage: 'https://via.placeholder.com/40',
-                        name: 'Alice Johnson',
-                        rollNo: '2023MECH-003',
-                        major: 'Mechanical Engineering',
-                        year: '2023'
-                    },
-                    ];
-                    isLoading.value = false;
-                }, 200);
+
+                // Fetch students
+                let {
+                    users: studentsData,
+                    error: studentsError,
+                    load: loadStudents,
+                } = getAllUser("students");
+                await loadStudents();
+                if (studentsError.value) {
+                    throw new Error("Failed to fetch students: " + studentsError.value);
+                }
+                students.value = studentsData.value;
+
+                // Fetch teachers
+                let {
+                    users: teachersData,
+                    error: teachersError,
+                    load: loadTeachers,
+                } = getAllUser("teachers");
+                await loadTeachers();
+                if (teachersError.value) {
+                    throw new Error("Failed to fetch teachers: " + teachersError.value);
+                }
+                teachers.value = teachersData.value;
+
+                // Update loading state
+                isLoading.value = false;
             } catch (error) {
                 console.error("Error during component mount:", error);
                 isLoading.value = false;
@@ -621,13 +702,15 @@ export default {
             isLoading,
             activeSection,
             students,
+            teachers,
             studentLimits,
             teacherIds,
             isEditModalOpen,
             isDeleteModalOpen,
+            isDeleteTeacherModalOpen,
             isEditLimitModalOpen,
             isDeleteTeacherIdModalOpen,
-            selectedStudent,
+            selectedUser,
             selectedLimit,
             selectedTeacherIdIndex,
             setActiveSection,
@@ -638,14 +721,15 @@ export default {
             openEditLimitModal,
             closeEditLimitModal,
             saveStudentLimit,
-            openEditModal,
-            closeEditModal,
             saveStudent,
             openDeleteModal,
             closeDeleteModal,
             confirmDelete,
+            openDeleteTeacherModal,
+            confirmDeleteTeacher,
 
-            generateTeacherModal
+
+            generateTeacherModal,
         };
     },
 };
