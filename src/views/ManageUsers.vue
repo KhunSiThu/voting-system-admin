@@ -321,7 +321,8 @@
 
 
         <!-- Delete Confirmation Modal -->
-        <div v-if="isDeleteTeacherModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div v-if="isDeleteTeacherModalOpen"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-1/3">
                 <h2 class="text-xl font-bold mb-4">Delete Teacher</h2>
                 <p class="mb-4">Are you sure you want to delete {{ selectedUser.name }}?</p>
@@ -404,12 +405,14 @@
 <script>
 import SideBar from "@/components/SideBar.vue";
 import useDeleteTeacherId from "@/composables/deleteTeacherId";
+import deleteUser from "@/composables/deleteUser";
 import listenToAllTeacherIds from "@/composables/getAllTeacherId";
 import getAllUser from "@/composables/getAllUser";
 import getStudentLimit from "@/composables/getStudentLimit";
 import { db } from "@/firebase/config";
 import { onUnmounted } from "vue";
 import { ref, onMounted } from "vue";
+
 
 export default {
     components: {
@@ -607,14 +610,13 @@ export default {
                     throw new Error("No student selected for deletion.");
                 }
 
-                // Reference to the student document in Firestore
-                const studentRef = db.collection("students").doc(selectedUser.value.id);
+                const studentId = selectedUser.value.id;
 
-                // Delete the document
-                await studentRef.delete();
+                // Call deleteUser with the studentId
+                await deleteUser("students",studentId);
 
                 // Update the local state to remove the deleted student
-                students.value = students.value.filter((s) => s.id !== selectedUser.value.id);
+                students.value = students.value.filter((s) => s.id !== studentId);
 
                 // Close the delete modal
                 closeDeleteModal();
@@ -641,11 +643,13 @@ export default {
                     throw new Error("No teacher selected for deletion.");
                 }
 
-                // Reference to the teacher document in Firestore
-                const teacherRef = db.collection("teachers").doc(selectedUser.value.id);
 
-                // Delete the document
-                await teacherRef.delete();
+                const teacherId = selectedUser.value.id;
+
+                // Call deleteUser with the teacherId
+                await deleteUser("teachers",teacherId);
+
+                
 
                 // Update the local state to remove the deleted teacher
                 teachers.value = teachers.value.filter((s) => s.id !== selectedUser.value.id);
